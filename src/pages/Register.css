@@ -1,0 +1,278 @@
+/* Register Page Styles - Extends Login.css */
+.register-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    position: relative;
+}
+
+.register-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.register-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.4;
+}
+
+.register-bg-circle-1 {
+    width: 500px;
+    height: 500px;
+    background: var(--color-accent-secondary);
+    top: -200px;
+    left: -100px;
+}
+
+.register-bg-circle-2 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-accent-primary);
+    bottom: -100px;
+    right: -100px;
+}
+
+.register-container {
+    width: 100%;
+    max-width: 480px;
+}
+
+.register-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.register-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.register-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.register-logo-icon {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.register-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.register-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+/* Form */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+/* Password Strength Meter */
+.password-strength {
+    margin-top: var(--spacing-sm);
+}
+
+.strength-bar {
+    display: flex;
+    gap: 4px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.strength-segment {
+    flex: 1;
+    height: 4px;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-full);
+    transition: background var(--transition-base);
+}
+
+.strength-segment.active.weak {
+    background: var(--color-error);
+}
+
+.strength-segment.active.medium {
+    background: var(--color-warning);
+}
+
+.strength-segment.active.strong {
+    background: var(--color-success);
+}
+
+.strength-label {
+    font-size: var(--font-size-xs);
+    text-transform: capitalize;
+}
+
+.strength-label.weak {
+    color: var(--color-error);
+}
+
+.strength-label.medium {
+    color: var(--color-warning);
+}
+
+.strength-label.strong {
+    color: var(--color-success);
+}
+
+/* Requirements List */
+.password-requirements {
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--color-bg-glass);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+}
+
+.requirement {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-tertiary);
+}
+
+.requirement:last-child {
+    margin-bottom: 0;
+}
+
+.requirement.met {
+    color: var(--color-success);
+}
+
+.requirement svg {
+    flex-shrink: 0;
+}
+
+/* Terms Checkbox */
+.terms-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.terms-checkbox input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent-primary);
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.terms-checkbox a {
+    color: var(--color-accent-primary);
+}
+
+/* Submit Button - Same as login */
+.register-btn {
+    width: 100%;
+    padding: var(--spacing-lg);
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    color: white;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.register-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.register-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Alert - Same as login */
+.register-alert {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+}
+
+.register-alert.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--color-error);
+}
+
+.register-alert.success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: var(--color-success);
+}
+
+/* Footer */
+.register-footer {
+    margin-top: var(--spacing-xl);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.register-footer a {
+    color: var(--color-accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .register-page {
+        padding: var(--spacing-md);
+    }
+
+    .register-card {
+        padding: var(--spacing-xl);
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}

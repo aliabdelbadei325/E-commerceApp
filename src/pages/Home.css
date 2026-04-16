@@ -1,0 +1,307 @@
+.home-page {
+    min-height: 100vh;
+}
+
+/* Section Styles */
+.home-section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--spacing-2xl);
+    gap: var(--spacing-lg);
+}
+
+.section-title {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.section-subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+}
+
+.section-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-accent-primary);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: gap var(--transition-base);
+}
+
+.section-link:hover {
+    gap: var(--spacing-md);
+}
+
+/* Categories Section */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.category-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    aspect-ratio: 4/3;
+    text-decoration: none;
+}
+
+.category-image-wrapper {
+    position: absolute;
+    inset: 0;
+}
+
+.category-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.category-card:hover .category-image {
+    transform: scale(1.1);
+}
+
+.category-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(10, 10, 15, 0.9) 0%,
+            rgba(10, 10, 15, 0.3) 50%,
+            transparent 100%);
+}
+
+.category-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-xl);
+    z-index: 1;
+}
+
+.category-name {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.category-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.category-count {
+    font-size: var(--font-size-xs);
+    color: var(--color-accent-primary);
+    font-weight: 500;
+}
+
+/* Promotional Banner */
+.promo-section {
+    padding: var(--spacing-2xl) 0;
+}
+
+.promo-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    padding: var(--spacing-3xl);
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+}
+
+.promo-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+}
+
+.promo-badge {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--gradient-accent);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.promo-title {
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.promo-description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    max-width: 400px;
+}
+
+.promo-btn {
+    align-self: flex-start;
+}
+
+.promo-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    opacity: 0.3;
+    filter: blur(60px);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.promo-image {
+    position: relative;
+    max-width: 300px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Features Section */
+.features-section {
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.feature-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.feature-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-card:last-child {
+        grid-column: span 2;
+    }
+
+    .promo-banner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .promo-content {
+        align-items: center;
+    }
+
+    .promo-btn {
+        align-self: center;
+    }
+
+    .promo-visual {
+        display: none;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .home-section {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .section-title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-card:last-child {
+        grid-column: span 1;
+    }
+
+    .promo-title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .feature-item {
+        flex-direction: row;
+        text-align: left;
+        gap: var(--spacing-md);
+    }
+
+    .feature-icon {
+        margin-bottom: 0;
+        font-size: 2rem;
+    }
+}

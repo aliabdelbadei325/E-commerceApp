@@ -1,0 +1,44 @@
+.skeleton {
+    background: #2a2a2a;
+    /* Dark base color matching theme */
+    background: linear-gradient(110deg,
+            var(--color-bg-secondary) 8%,
+            var(--color-bg-primary) 18%,
+            var(--color-bg-secondary) 33%);
+    border-radius: var(--radius-sm);
+    background-size: 200% 100%;
+    animation: shine 1.5s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position-x: -200%;
+    }
+}
+
+.skeleton-text {
+    height: 1em;
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+.skeleton-title {
+    height: 2em;
+    width: 70%;
+    margin-bottom: 1em;
+}
+
+.skeleton-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.skeleton-button {
+    height: 40px;
+    width: 100%;
+}
+
+.skeleton-card {
+    border-radius: var(--radius-md);
+}
