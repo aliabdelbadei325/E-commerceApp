@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = 'https://e-commerceapp-production-0334.up.railway.app/api';
+export const API_URL = 'https://striking-illumination-production-b911.up.railway.app/api';
 
 // Create axios instance
 const api = axios.create({
