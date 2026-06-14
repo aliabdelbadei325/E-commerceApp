@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_URL =
-"https://striking-illumination-production-b911.up.railway.app/api";
+export const API_URL = "https://striking-illumination-production-b911.up.railway.app/api";
+
 // Create axios instance
 const api = axios.create({
     baseURL: API_URL,
