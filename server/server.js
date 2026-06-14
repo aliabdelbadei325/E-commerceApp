@@ -43,8 +43,9 @@ app.use(helmet({
 // Enable CORS
 app.use(cors({
     origin: process.env.NODE_ENV === 'production'
-        ? 'https://yourdomain.com'
+        ? 'https://e-commerceapp-production-0334.up.railway.app'
         : 'http://localhost:5173',
+
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization']
