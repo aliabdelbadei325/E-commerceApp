@@ -103,22 +103,18 @@ const createOrder = async (req, res, next) => {
                 await updatedProduct.save();
             }
 
-            // Low stock alert (e.g. less than 10)
+            // Low stock alert (e.g. less than 10) (asynchronously)
             if (updatedProduct.stockQuantity < 10) {
-                try {
-                    await sendLowStockAlert(updatedProduct);
-                } catch (emailError) {
-                    console.error('Low stock alert email failed:', emailError);
-                }
+                sendLowStockAlert(updatedProduct).catch(emailError => {
+                    console.error('Low stock alert email failed in background:', emailError);
+                });
             }
         }
 
-        // Send confirmation email
-        try {
-            await sendOrderConfirmation(order, req.user);
-        } catch (emailError) {
-            console.error('Order confirmation email failed:', emailError);
-        }
+        // Send confirmation email (asynchronously)
+        sendOrderConfirmation(order, req.user).catch(emailError => {
+            console.error('Order confirmation email failed in background:', emailError);
+        });
 
         res.status(201).json({
             success: true,

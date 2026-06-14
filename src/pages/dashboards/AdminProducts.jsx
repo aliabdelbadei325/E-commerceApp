@@ -74,51 +74,53 @@ const AdminProducts = () => {
                 </div>
 
                 <div className="glass-card" style={{ overflow: 'hidden' }}>
-                    <table className="dashboard-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
-                        <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
-                            <tr>
-                                <th style={{ padding: '15px', textAlign: 'left' }}>Product</th>
-                                <th style={{ padding: '15px', textAlign: 'left' }}>Category</th>
-                                <th style={{ padding: '15px', textAlign: 'left' }}>Price</th>
-                                <th style={{ padding: '15px', textAlign: 'left' }}>Stock</th>
-                                <th style={{ padding: '15px', textAlign: 'center' }}>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filteredProducts.map(product => (
-                                <tr key={product._id || product.id} style={{ borderBottom: '1px solid var(--color-border)' }}>
-                                    <td style={{ padding: '15px' }}>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                                            <img src={product.image} alt="" style={{ width: '50px', height: '50px', objectFit: 'cover', borderRadius: '8px' }} />
-                                            <span>{product.name}</span>
-                                        </div>
-                                    </td>
-                                    <td style={{ padding: '15px' }}>{product.category}</td>
-                                    <td style={{ padding: '15px' }}>${product.price.toFixed(2)}</td>
-                                    <td style={{ padding: '15px' }}>
-                                        <span style={{ color: product.stockQuantity > 10 ? 'var(--color-success)' : 'var(--color-warning)' }}>
-                                            {product.stockQuantity > 0 ? product.stockQuantity : 'Out of Stock'}
-                                        </span>
-                                    </td>
-                                    <td style={{ padding: '15px', textAlign: 'center' }}>
-                                        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
-                                            <Link to={`/admin/products/${product._id || product.id}`} className="btn-icon" style={{ width: '35px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="Edit">
-                                                <FiEdit2 />
-                                            </Link>
-                                            <button
-                                                className="btn-icon"
-                                                style={{ width: '35px', height: '35px', color: 'var(--color-error)' }}
-                                                title="Delete"
-                                                onClick={() => handleDelete(product._id || product.id)}
-                                            >
-                                                <FiTrash2 />
-                                            </button>
-                                        </div>
-                                    </td>
+                    <div style={{ overflowX: 'auto' }}>
+                        <table className="dashboard-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+                            <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+                                <tr>
+                                    <th style={{ padding: '15px', textAlign: 'left' }}>Product</th>
+                                    <th style={{ padding: '15px', textAlign: 'left' }}>Category</th>
+                                    <th style={{ padding: '15px', textAlign: 'left' }}>Price</th>
+                                    <th style={{ padding: '15px', textAlign: 'left' }}>Stock</th>
+                                    <th style={{ padding: '15px', textAlign: 'center' }}>Actions</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {filteredProducts.map(product => (
+                                    <tr key={product._id || product.id} style={{ borderBottom: '1px solid var(--color-border)' }}>
+                                        <td style={{ padding: '15px' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                                <img src={product.image} alt="" style={{ width: '50px', height: '50px', objectFit: 'cover', borderRadius: '8px' }} />
+                                                <span>{product.name}</span>
+                                            </div>
+                                        </td>
+                                        <td style={{ padding: '15px' }}>{product.category}</td>
+                                        <td style={{ padding: '15px' }}>${product.price.toFixed(2)}</td>
+                                        <td style={{ padding: '15px' }}>
+                                            <span style={{ color: product.stockQuantity > 10 ? 'var(--color-success)' : 'var(--color-warning)' }}>
+                                                {product.stockQuantity > 0 ? product.stockQuantity : 'Out of Stock'}
+                                            </span>
+                                        </td>
+                                        <td style={{ padding: '15px', textAlign: 'center' }}>
+                                            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+                                                <Link to={`/admin/products/edit/${product._id || product.id}`} className="btn-icon" style={{ width: '35px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="Edit">
+                                                    <FiEdit2 />
+                                                </Link>
+                                                <button
+                                                    className="btn-icon"
+                                                    style={{ width: '35px', height: '35px', color: 'var(--color-error)' }}
+                                                    title="Delete"
+                                                    onClick={() => handleDelete(product._id || product.id)}
+                                                >
+                                                    <FiTrash2 />
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

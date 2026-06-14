@@ -155,12 +155,12 @@ const AddressesPage = () => {
                             <button className="btn-icon" onClick={resetForm}><FiX /></button>
                         </div>
                         <form onSubmit={handleSubmit}>
-                            <div className="form-row" style={{ display: 'flex', gap: '20px', marginBottom: '15px' }}>
-                                <div className="form-group" style={{ flex: 1 }}>
+                            <div className="form-row">
+                                <div className="form-group">
                                     <label>First Name</label>
                                     <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} className="form-input" required />
                                 </div>
-                                <div className="form-group" style={{ flex: 1 }}>
+                                <div className="form-group">
                                     <label>Last Name</label>
                                     <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} className="form-input" required />
                                 </div>
@@ -169,18 +169,18 @@ const AddressesPage = () => {
                                 <label>Street Address</label>
                                 <input type="text" name="address" value={formData.address} onChange={handleInputChange} className="form-input" required />
                             </div>
-                            <div className="form-row" style={{ display: 'flex', gap: '20px', margin: '15px 0' }}>
-                                <div className="form-group" style={{ flex: 1 }}>
+                            <div className="form-row">
+                                <div className="form-group">
                                     <label>City</label>
                                     <input type="text" name="city" value={formData.city} onChange={handleInputChange} className="form-input" required />
                                 </div>
-                                <div className="form-group" style={{ flex: 1 }}>
+                                <div className="form-group">
                                     <label>Postal Code</label>
                                     <input type="text" name="postalCode" value={formData.postalCode} onChange={handleInputChange} className="form-input" required />
                                 </div>
                             </div>
-                            <div className="form-row" style={{ display: 'flex', gap: '20px', margin: '15px 0' }}>
-                                <div className="form-group" style={{ flex: 1 }}>
+                            <div className="form-row">
+                                <div className="form-group">
                                     <label>Country</label>
                                     <select name="country" value={formData.country} onChange={handleInputChange} className="form-input">
                                         <option value="United States">United States</option>
@@ -188,7 +188,7 @@ const AddressesPage = () => {
                                         <option value="United Kingdom">United Kingdom</option>
                                     </select>
                                 </div>
-                                <div className="form-group" style={{ flex: 1 }}>
+                                <div className="form-group">
                                     <label>Phone Number</label>
                                     <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} className="form-input" required />
                                 </div>

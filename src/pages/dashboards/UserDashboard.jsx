@@ -77,9 +77,21 @@ const UserDashboard = () => {
                             <p>Manage your orders, wishlist, and account settings</p>
                         </div>
                     </div>
-                    <span className="dashboard-role-badge">
-                        {user?.role} Account
-                    </span>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '10px' }}>
+                        <span className="dashboard-role-badge">
+                            {user?.role} Account
+                        </span>
+                        {user?.role === 'admin' && (
+                            <Link to="/admin" className="btn btn-primary" style={{ padding: '8px 16px', fontSize: '0.85rem' }}>
+                                🔐 Go to Admin Panel
+                            </Link>
+                        )}
+                        {user?.role === 'staff' && (
+                            <Link to="/staff" className="btn btn-primary" style={{ padding: '8px 16px', fontSize: '0.85rem' }}>
+                                🛠️ Go to Staff Panel
+                            </Link>
+                        )}
+                    </div>
                 </div>
 
                 {/* Stats */}

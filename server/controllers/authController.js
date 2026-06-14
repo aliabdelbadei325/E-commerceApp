@@ -47,44 +47,41 @@ const register = async (req, res, next) => {
         // Generate token
         const token = user.generateToken();
 
-        // Send Welcome Email
-        try {
-            const welcomeHtml = `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px;">
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <span style="font-size: 24px; font-weight: bold; color: #8b5cf6;">Luxe<span style="color: #333;">Store</span></span>
-                    </div>
-                    <h2 style="color: #333; text-align: center;">Welcome to LuxeStore, ${firstName}!</h2>
-                    <p style="color: #666; line-height: 1.6;">
-                        Thank you for joining our exclusive community of luxury shoppers. We're thrilled to have you with us!
-                    </p>
-                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                        <h3 style="margin-top: 0; color: #333;">Getting Started:</h3>
-                        <ul style="color: #666; padding-left: 20px;">
-                            <li>Explore our premium collections.</li>
-                            <li>Save items to your wishlist.</li>
-                            <li>Enjoy a seamless shopping experience.</li>
-                        </ul>
-                    </div>
-                    <p style="color: #666;">
-                        If you have any questions, feel free to reply to this email.
-                    </p>
-                    <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                    <p style="font-size: 12px; color: #999; text-align: center;">
-                        &copy; 2026 LuxeStore Inc. All rights reserved.
-                    </p>
+        // Send Welcome Email (asynchronously to prevent blocking the registration response)
+        const welcomeHtml = `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px;">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <span style="font-size: 24px; font-weight: bold; color: #8b5cf6;">Luxe<span style="color: #333;">Store</span></span>
                 </div>
-            `;
+                <h2 style="color: #333; text-align: center;">Welcome to LuxeStore, ${firstName}!</h2>
+                <p style="color: #666; line-height: 1.6;">
+                    Thank you for joining our exclusive community of luxury shoppers. We're thrilled to have you with us!
+                </p>
+                <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <h3 style="margin-top: 0; color: #333;">Getting Started:</h3>
+                    <ul style="color: #666; padding-left: 20px;">
+                        <li>Explore our premium collections.</li>
+                        <li>Save items to your wishlist.</li>
+                        <li>Enjoy a seamless shopping experience.</li>
+                    </ul>
+                </div>
+                <p style="color: #666;">
+                    If you have any questions, feel free to reply to this email.
+                </p>
+                <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+                <p style="font-size: 12px; color: #999; text-align: center;">
+                    &copy; 2026 LuxeStore Inc. All rights reserved.
+                </p>
+            </div>
+        `;
 
-            await sendEmail({
-                email: user.email,
-                subject: 'Welcome to LuxeStore - Your Premium Fashion Destination',
-                html: welcomeHtml
-            });
-        } catch (error) {
-            console.error('Welcome email failed to send:', error);
-            // Don't throw error to not interrupt sign up flow
-        }
+        sendEmail({
+            email: user.email,
+            subject: 'Welcome to LuxeStore - Your Premium Fashion Destination',
+            html: welcomeHtml
+        }).catch(error => {
+            console.error('Welcome email failed to send in background:', error);
+        });
 
         // Response (without password)
         res.status(201).json({

@@ -83,69 +83,71 @@ const AdminOrders = () => {
                 </div>
 
                 <div className="glass-card" style={{ overflow: 'hidden' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                        <thead>
-                            <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                                <th style={{ padding: '20px', textAlign: 'left', color: 'var(--color-text-secondary)' }}>Order ID</th>
-                                <th style={{ padding: '20px', textAlign: 'left', color: 'var(--color-text-secondary)' }}>Customer</th>
-                                <th style={{ padding: '20px', textAlign: 'left', color: 'var(--color-text-secondary)' }}>Total</th>
-                                <th style={{ padding: '20px', textAlign: 'left', color: 'var(--color-text-secondary)' }}>Date</th>
-                                <th style={{ padding: '20px', textAlign: 'left', color: 'var(--color-text-secondary)' }}>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filteredOrders.length > 0 ? (
-                                filteredOrders.map(order => (
-                                    <tr key={order._id || order.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                                        <td style={{ padding: '20px', fontFamily: 'monospace' }}>#{String(order._id || order.id).substring(0, 8)}...</td>
-                                        <td style={{ padding: '20px' }}>
-                                            <div>{order.user?.firstName || 'Guest'} {order.user?.lastName || ''}</div>
-                                            <div style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>{order.user?.email}</div>
-                                        </td>
-                                        <td style={{ padding: '20px', fontWeight: '600' }}>${(order.totalPrice || order.total || 0).toFixed(2)}</td>
-                                        <td style={{ padding: '20px', fontSize: '0.9rem' }}>{new Date(order.createdAt).toLocaleDateString()}</td>
-                                        <td style={{ padding: '20px' }}>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                                <select
-                                                    value={order.status}
-                                                    onChange={(e) => handleStatusChange(order._id || order.id, e.target.value)}
-                                                    disabled={updatingId === (order._id || order.id)}
-                                                    style={{
-                                                        padding: '6px 12px',
-                                                        borderRadius: '20px',
-                                                        border: `1px solid ${getStatusColor(order.status)}`,
-                                                        color: getStatusColor(order.status),
-                                                        background: 'rgba(0,0,0,0.2)',
-                                                        cursor: 'pointer'
-                                                    }}
-                                                >
-                                                    <option value="Pending">Pending</option>
-                                                    <option value="Processing">Processing</option>
-                                                    <option value="Shipped">Shipped</option>
-                                                    <option value="Delivered">Delivered</option>
-                                                    <option value="Cancelled">Cancelled</option>
-                                                </select>
-                                                <Link
-                                                    to={`/admin/orders/${order._id || order.id}`}
-                                                    className="btn-icon"
-                                                    style={{ width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                                                    title="View Details"
-                                                >
-                                                    <FiEye />
-                                                </Link>
-                                            </div>
+                    <div style={{ overflowX: 'auto' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                            <thead>
+                                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
+                                    <th style={{ padding: '20px', textAlign: 'left', color: 'var(--color-text-secondary)' }}>Order ID</th>
+                                    <th style={{ padding: '20px', textAlign: 'left', color: 'var(--color-text-secondary)' }}>Customer</th>
+                                    <th style={{ padding: '20px', textAlign: 'left', color: 'var(--color-text-secondary)' }}>Total</th>
+                                    <th style={{ padding: '20px', textAlign: 'left', color: 'var(--color-text-secondary)' }}>Date</th>
+                                    <th style={{ padding: '20px', textAlign: 'left', color: 'var(--color-text-secondary)' }}>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {filteredOrders.length > 0 ? (
+                                    filteredOrders.map(order => (
+                                        <tr key={order._id || order.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                                            <td style={{ padding: '20px', fontFamily: 'monospace' }}>#{String(order._id || order.id).substring(0, 8)}...</td>
+                                            <td style={{ padding: '20px' }}>
+                                                <div>{order.user?.firstName || 'Guest'} {order.user?.lastName || ''}</div>
+                                                <div style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>{order.user?.email}</div>
+                                            </td>
+                                            <td style={{ padding: '20px', fontWeight: '600' }}>${(order.totalPrice || order.total || 0).toFixed(2)}</td>
+                                            <td style={{ padding: '20px', fontSize: '0.9rem' }}>{new Date(order.createdAt).toLocaleDateString()}</td>
+                                            <td style={{ padding: '20px' }}>
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                    <select
+                                                        value={order.status}
+                                                        onChange={(e) => handleStatusChange(order._id || order.id, e.target.value)}
+                                                        disabled={updatingId === (order._id || order.id)}
+                                                        style={{
+                                                            padding: '6px 12px',
+                                                            borderRadius: '20px',
+                                                            border: `1px solid ${getStatusColor(order.status)}`,
+                                                            color: getStatusColor(order.status),
+                                                            background: 'rgba(0,0,0,0.2)',
+                                                            cursor: 'pointer'
+                                                        }}
+                                                    >
+                                                        <option value="Pending">Pending</option>
+                                                        <option value="Processing">Processing</option>
+                                                        <option value="Shipped">Shipped</option>
+                                                        <option value="Delivered">Delivered</option>
+                                                        <option value="Cancelled">Cancelled</option>
+                                                    </select>
+                                                    <Link
+                                                        to={`/admin/orders/${order._id || order.id}`}
+                                                        className="btn-icon"
+                                                        style={{ width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                                                        title="View Details"
+                                                    >
+                                                        <FiEye />
+                                                    </Link>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))
+                                ) : (
+                                    <tr>
+                                        <td colSpan="5" style={{ padding: '40px', textAlign: 'center', color: 'var(--color-text-secondary)' }}>
+                                            No orders found.
                                         </td>
                                     </tr>
-                                ))
-                            ) : (
-                                <tr>
-                                    <td colSpan="5" style={{ padding: '40px', textAlign: 'center', color: 'var(--color-text-secondary)' }}>
-                                        No orders found.
-                                    </td>
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
