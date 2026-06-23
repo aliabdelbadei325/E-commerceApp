@@ -44,7 +44,8 @@ app.use(helmet({
 app.use(cors({
     origin: [
         'https://e-commerceapp-production-0334.up.railway.app',
-        'http://localhost:5173'
+        'http://localhost:5173',
+        'https://e-commerce-app-khaki-eight.vercel.app',
     ],
 
     credentials: true,
